@@ -1,0 +1,7 @@
+- repo: local
+  hooks:
+    - id: prettier-eslint-hook
+      name: prettier-eslint-hook
+      entry: npm run format-only-modified
+      language: node
+      pass_filenames: true
