@@ -7,8 +7,8 @@ jobs:
     name: Validate Branch name
 
     steps:
-      steps:
-      - uses: deepakputhraya/action-branch-name@master
+      - name: Validate branch
+        uses: deepakputhraya/action-branch-name@master
         with:
           regex: '[a-z]+' # Regex the branch should match. This example enforces grouping
           ignore: master # Ignore exactly matching branch names from convention
