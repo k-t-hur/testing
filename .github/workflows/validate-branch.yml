@@ -5,7 +5,7 @@ on: push
 jobs:
   run-validation:
     name: Validate Branch name
-
+    runs-on: ubuntu-latest
     steps:
       - name: Validate branch
         uses: deepakputhraya/action-branch-name@master
