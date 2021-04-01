@@ -1,0 +1,26 @@
+name: Code Formatting
+
+on: pull_request
+
+jobs:
+  run-linters:
+    name: Check code formatting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: |
+          set -o pipefail
+          npm run format:scan 2>/dev/null | sed '1,4d' | xargs -0 printf 'Whoops! Looks like there are some formatting errors.\nTo avoid these errors in the future, install our pre-commit hook!\n\nThe following files need to be formatted:\n\n%s'
+
